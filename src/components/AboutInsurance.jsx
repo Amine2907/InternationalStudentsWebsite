@@ -9,6 +9,7 @@ import FormatColorResetIcon from '@mui/icons-material/FormatColorReset';
 import DescriptionIcon from '@mui/icons-material/Description';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import MediaCard from "./Cards/card";
 
 const Contracts = () => {
   const [data, setData] = useState([]);
@@ -53,40 +54,41 @@ const Contracts = () => {
     );
   };
 
-  const ShowContracts = () => {
-    return (
-      <>
-        {data.map((contract) => (
-          <div key={contract._id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
-            <div className="card text-center h-100">
-              <div className="card-body">
-                <div style={{ height: "100%" }}>
-                  <img src={''} alt="contract" style={{ marginBottom: "20px", maxWidth: "100%" }} />
-                  <h5 className="card-title"><GavelIcon/>{contract.name.substring(0, 12)}</h5>
-                  <p><BrokenImageIcon/>Casse accidentelle</p>
-                  <p><ChargingStationIcon/>Court-Circuit</p>
-                  <p><FormatColorResetIcon/>Oxydation & Humidité</p>
-                  <p>
-                    <img src={''} alt="Knife Icon" /> Option vol
-                  </p>                 
-                   <p  className="card-text">  <DescriptionIcon/>{contract.description.substring(0, 90)}</p>
-                  <div className="price"><AttachMoneyIcon/>Price: {contract.price} DT</div>
-                </div>
-              </div>
-            </div> 
-          </div>
-        ))}
-      </>
-    );
-  };
+  // const ShowContracts = () => {
+  //   return (
+  //     <>
+  //       {data.map((contract) => (
+  //         <div key={contract._id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
+  //           <div className="card text-center h-100">
+  //             <div className="card-body">
+  //               <div style={{ height: "100%" }}>
+  //                 <img src={''} alt="contract" style={{ marginBottom: "20px", maxWidth: "100%" }} />
+  //                 <h5 className="card-title"><GavelIcon/>{contract.name.substring(0, 12)}</h5>
+  //                 <p><BrokenImageIcon/>Casse accidentelle</p>
+  //                 <p><ChargingStationIcon/>Court-Circuit</p>
+  //                 <p><FormatColorResetIcon/>Oxydation & Humidité</p>
+  //                 <p>
+  //                   <img src={''} alt="Knife Icon" /> Option vol
+  //                 </p>                 
+  //                  <p  className="card-text">  <DescriptionIcon/>{contract.description.substring(0, 90)}</p>
+  //                 <div className="price"><AttachMoneyIcon/>Price: {contract.price} DT</div>
+  //               </div>
+  //             </div>
+  //           </div> 
+  //         </div>
+  //       ))}
+  //     </>
+  //   );
+  // };
 
   return (
     <div>
       <div className="container my-3 py-3">
         <div className="row">
           <div className="col-12">
-            <h2 className="display-5 text-center">En savoir plus sur</h2>
-            <hr />
+            <h2 className="display-5 text-center">Blogs</h2>
+            <hr />  
+            <MediaCard/>   
             {/* <div className="text-center my-3 d-flex justify-content-center">
               <div className="mx-5 text-center">
                 <a href="./AboutRepair">
@@ -106,16 +108,15 @@ const Contracts = () => {
                 </a>
                 <div>Online Shopping</div>
               </div>
-            </div> */} 
-
+            </div> */}  
           </div>
         </div>
-        <br/>
+        {/* <br/> 
         <br/>
         <br/>
         <h2 className="display-5 text-center">Blogs</h2> 
         <hr /> 
-        {/* <div className="row justify-content-center">{loading ? <Loading /> : <ShowContracts />}</div> */}
+        <div className="row justify-content-center">{loading ? <Loading /> : <ShowContracts />}</div> */}
       </div>
     </div>
   );

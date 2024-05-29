@@ -8,13 +8,10 @@ function Home() {
   localStorage.removeItem('product_id')
   return (
     <>
-      <Navbar />
-
+      <Navbar /> 
       <Main />
       <CarouselFadeExample/>
       <Contracts/>
-      
-      
       <Footer />
     </>
   )
