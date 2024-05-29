@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import axios from "axios";
-import contractimage from "../img/contract.avif";
-import replogo from "../img/repairlogo.jpg";
-import shoplogo from "../img/shoplogo.png";
-import inslogo from "../img/W.png";
+import axios from "axios"; 
 import BrokenImageIcon from '@mui/icons-material/BrokenImage';
 import ChargingStationIcon from '@mui/icons-material/ChargingStation';
-import FormatColorResetIcon from '@mui/icons-material/FormatColorReset';
-import knife from '../img/game-icons--knife-thrust.svg';
+import FormatColorResetIcon from '@mui/icons-material/FormatColorReset'; 
 import DescriptionIcon from '@mui/icons-material/Description';
 import GavelIcon from '@mui/icons-material/Gavel';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
@@ -66,19 +61,19 @@ const Contracts = () => {
             <div className="card text-center h-100">
               <div className="card-body">
                 <div style={{ height: "100%" }}>
-                  <img src={contractimage} alt="contract" style={{ marginBottom: "20px", maxWidth: "100%" }} />
+                  <img src={''} alt="contract" style={{ marginBottom: "20px", maxWidth: "100%" }} />
                   <h5 className="card-title"><GavelIcon/>{contract.name.substring(0, 12)}</h5>
                   <p><BrokenImageIcon/>Casse accidentelle</p>
                   <p><ChargingStationIcon/>Court-Circuit</p>
                   <p><FormatColorResetIcon/>Oxydation & Humidité</p>
                   <p>
-                    <img src={knife} alt="Knife Icon" /> Option vol
+                    <img src={''} alt="Knife Icon" /> Option vol
                   </p>                 
                    <p  className="card-text">  <DescriptionIcon/>{contract.description.substring(0, 90)}</p>
                   <div className="price"><AttachMoneyIcon/>Price: {contract.price} DT</div>
                 </div>
               </div>
-            </div>
+            </div> 
           </div>
         ))}
       </>

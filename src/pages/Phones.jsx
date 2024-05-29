@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import img from "../img/r6.jpg";
+import "react-loading-skeleton/dist/skeleton.css"; 
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar"; // Import your Navbar component
