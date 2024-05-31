@@ -8,7 +8,7 @@ import axios from "axios";
 // import FormatColorResetIcon from '@mui/icons-material/FormatColorReset'; 
 // import DescriptionIcon from '@mui/icons-material/Description';
 // import GavelIcon from '@mui/icons-material/Gavel';
-// import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+// import AttachMoneyIcon from '@mui/icons-material/AttachMoney'; 
 import MediaCard from "./Cards/card";
 import Visa from "./cards_images/ValidationEtape1.png";
 import AssMal  from "./cards_images/AssMaladieEtape2.png" ;
@@ -91,7 +91,7 @@ const Contracts = () => {
     <h2 className="display-5 text-center">Blogs</h2>
             <hr />   
       <div className="col-md-3"> 
-        <a href="./AboutRepair">  
+        <a href="./Visa">   
         <MediaCard
         image={Visa}
         title="Validation Visa"
@@ -100,7 +100,7 @@ const Contracts = () => {
       </a> 
       </div>
       <div className="col-md-3">
-      <a href="./AboutRepair"> 
+      <a href="./AssMal">  
       <MediaCard
         image={AssMal} 
         title="Assurance Maladie"
@@ -109,7 +109,7 @@ const Contracts = () => {
                 </a>  
       </div>
       <div className="col-md-3">
-      <a href="./AboutRepair"> 
+      <a href="./AssRep"> 
       <MediaCard
         image={Assrep} 
         title="Assurance Responsabilite civile"
@@ -118,7 +118,7 @@ const Contracts = () => {
                 </a>     
       </div>
       <div className="col-md-3">
-      <a href="./AboutRepair"> 
+      <a href="./Cvec"> 
       <MediaCard
         image={CVEC} 
         title="CVEC"
@@ -127,7 +127,7 @@ const Contracts = () => {
                 </a>    
       </div> 
       <div className="col-md-3">
-      <a href="./AboutRepair"> 
+      <a href="./CB"> 
       <MediaCard
         image={Bc} 
         title="Comlpte Bancaire"
@@ -136,7 +136,7 @@ const Contracts = () => {
                 </a>    
       </div> 
       <div className="col-md-3">
-      <a href="./AboutRepair"> 
+      <a href="./Cvitale"> 
       <MediaCard
         image={CVitale} 
         title="Carte vitale"

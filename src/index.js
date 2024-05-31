@@ -13,6 +13,12 @@ import { Home, Product, Products, AboutPage, ContactPage, Cart,Computers, Login,
    PageNotFound, Hi, AddProduct, Upload,AddContract ,AddInsurance,Insurance, Claim , Confirm , 
    AboutINS,
    AboutRepair} from "./pages"
+import AboutVisa from './pages/AboutVisa';
+import AboutAssMal from './pages/AboutAssMal';
+import AboutAssrep from './pages/AboutAssRep';
+import AboutCB from './pages/AboutCB';
+import AboutCVEC from './pages/AboutCvec';
+import AboutCVitale from './pages/AboutCVitale';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -50,7 +56,13 @@ root.render(
         <Route path="/Updateprofile" element={<Updateprofile/>} />
         <Route path="/Forgotpassword" element={<FotgotPassword/>} />
         <Route path="/Resetyoupassword" element={<Resetyoupassword/>} />
-
+        {/*  */} 
+        <Route path="/Visa" element={<AboutVisa/>} /> 
+        <Route path="/AssMal" element={<AboutAssMal/>} />  
+        <Route path="/AssRep" element={<AboutAssrep/>} />  
+        <Route path="/CB" element={<AboutCB/>} />  
+        <Route path="/Cvec" element={<AboutCVEC/>} />   
+        <Route path="/Cvitale" element={<AboutCVitale/>} />    
       </Routes>
     </Provider>
   </BrowserRouter>
