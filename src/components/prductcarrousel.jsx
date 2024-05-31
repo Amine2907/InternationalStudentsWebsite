@@ -1,8 +1,8 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import carousel1 from '../img/caroussel 1.png';
-import carousel2 from '../img/caroussel2.jpg';
-import carousel3 from '../img/caroussel3.jpg'
+import carousel1 from '../img/Caroussel1.jpg';
+import carousel2 from '../img/Caroussel2.jpg';
+import carousel3 from '../img/Caroussel3.jpg'; 
 
 const CarouselFadeExample = () => {
   return (
@@ -31,7 +31,7 @@ const CarouselFadeExample = () => {
           .carousel-caption p {
             font-size: 1.2em; /* Increase font size for caption descriptions */
           }
-        `}
+        `} 
       </style>
       <Carousel fade>
         <Carousel.Item>
@@ -41,8 +41,7 @@ const CarouselFadeExample = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Protect your Products</h3>
-            <p>Ensure the safety of your valuable items with our comprehensive insurance plans.</p>
+            <h3>Explorer les meilleurs universités en France </h3> 
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -52,8 +51,7 @@ const CarouselFadeExample = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Easy Online Shopping</h3>
-            <p>Shop hassle-free with our intuitive online platform and secure payment options.</p>
+            <h3>Aide aux démarches pour étudier en France</h3>  
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -63,13 +61,12 @@ const CarouselFadeExample = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Repair Services</h3>
-            <p>Trust our expert technicians to restore your broken products to their former glory.</p>
+            <h3>Pour une meilleure intégration</h3> 
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </div>
   );
-}
+} 
 
 export default CarouselFadeExample;

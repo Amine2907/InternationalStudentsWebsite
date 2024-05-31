@@ -2,8 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import logo from '../img/warden3rdlogo.png';
-
+import logo from './NavbarLogo/logo-png.png';  
 const Navbar = () => {
     const state = useSelector(state => state.handleCart);
     const dispatch = useDispatch();
@@ -19,12 +18,12 @@ const Navbar = () => {
         fontFamily: 'abril-fatface',
         fontSize: '20px'
     };
-
+ 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
             <div className="container">
                 <NavLink className="navbar-brand fw-bold fs-4 px-2 d-flex align-items-center" to="/">
-                    <img src={logo} alt="Logo" className="ms-2" style={{ height: '40px', width: '200px', color: '#4169E1' }} />
+                    <img src={logo}  alt="Logo" className="ms-2" style={{ height: '100px', width: '100px', color: '#4169E1' }} />
                     <span style={{ color: '#4169E1' }}></span>
                 </NavLink> 
 

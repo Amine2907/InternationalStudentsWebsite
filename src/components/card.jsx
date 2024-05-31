@@ -15,8 +15,7 @@ function BasicCard({ name, description, price, photo, purchaseId, claimStatus, c
       default:
         return ''; 
     }
-  };
-
+  }; 
   const isClaimable = (status) => {
     return !['Repayed', 'Rejected', 'Sent To Repair'].includes(status);
   };

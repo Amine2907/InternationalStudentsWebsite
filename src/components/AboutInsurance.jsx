@@ -3,14 +3,19 @@ import { useDispatch } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import axios from "axios"; 
-import BrokenImageIcon from '@mui/icons-material/BrokenImage';
-import ChargingStationIcon from '@mui/icons-material/ChargingStation';
-import FormatColorResetIcon from '@mui/icons-material/FormatColorReset'; 
-import DescriptionIcon from '@mui/icons-material/Description';
-import GavelIcon from '@mui/icons-material/Gavel';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+// import BrokenImageIcon from '@mui/icons-material/BrokenImage';
+// import ChargingStationIcon from '@mui/icons-material/ChargingStation';
+// import FormatColorResetIcon from '@mui/icons-material/FormatColorReset'; 
+// import DescriptionIcon from '@mui/icons-material/Description';
+// import GavelIcon from '@mui/icons-material/Gavel';
+// import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MediaCard from "./Cards/card";
-
+import Visa from "./cards_images/ValidationEtape1.png";
+import AssMal  from "./cards_images/AssMaladieEtape2.png" ;
+import Assrep from "./cards_images/AssRespCivile.jpg" ; 
+import CVEC from "./cards_images/CvecPart6.png";
+import Bc from "./cards_images/CompteBancairePart5.jpg" ;  
+import CVitale from "./cards_images/CarteVitalePartie3.png";  
 const Contracts = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -79,47 +84,96 @@ const Contracts = () => {
   //       ))}
   //     </>
   //   );
-  // };
-
+  // }; 
   return (
-    <div>
-      <div className="container my-3 py-3">
-        <div className="row">
-          <div className="col-12">
-            <h2 className="display-5 text-center">Blogs</h2>
-            <hr />  
-            <MediaCard/>   
-            {/* <div className="text-center my-3 d-flex justify-content-center">
+    <div className="container my-3 py-3">
+    <div className="row justify-content-center">
+    <h2 className="display-5 text-center">Blogs</h2>
+            <hr />   
+      <div className="col-md-3"> 
+        <a href="./AboutRepair">  
+        <MediaCard
+        image={Visa}
+        title="Validation Visa"
+        description=""
+      />  
+      </a> 
+      </div>
+      <div className="col-md-3">
+      <a href="./AboutRepair"> 
+      <MediaCard
+        image={AssMal} 
+        title="Assurance Maladie"
+        description=""
+      /> 
+                </a>  
+      </div>
+      <div className="col-md-3">
+      <a href="./AboutRepair"> 
+      <MediaCard
+        image={Assrep} 
+        title="Assurance Responsabilite civile"
+        description=""
+      /> 
+                </a>     
+      </div>
+      <div className="col-md-3">
+      <a href="./AboutRepair"> 
+      <MediaCard
+        image={CVEC} 
+        title="CVEC"
+        description=""
+      /> 
+                </a>    
+      </div> 
+      <div className="col-md-3">
+      <a href="./AboutRepair"> 
+      <MediaCard
+        image={Bc} 
+        title="Comlpte Bancaire"
+        description=""
+      /> 
+                </a>    
+      </div> 
+      <div className="col-md-3">
+      <a href="./AboutRepair"> 
+      <MediaCard
+        image={CVitale} 
+        title="Carte vitale"
+        description=""
+      />  
+                </a>    
+      </div>  
+{/* 
+            <div className="text-center my-3 d-flex justify-content-center">
               <div className="mx-5 text-center">
                 <a href="./AboutRepair">
-                  <img src={replogo} alt="Repair logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
+                  <img src={''} alt="Repair logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
                 </a>
                 <div>Repair Services</div>
               </div>
               <div className="mx-5 text-center">
                 <a href="./AboutINS">
-                  <img src={inslogo} alt="Insurance logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
+                  <img src={''} alt="Insurance logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
                 </a>
                 <div>Insurance</div>
               </div>
               <div className="mx-5 text-center">
                 <a href="./About">
-                  <img src={shoplogo} alt="Online Shopping logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
+                  <img src={''} alt="Online Shopping logo" style={{ maxWidth: "100px", height: "100px", borderRadius: "50%" }} />
                 </a>
-                <div>Online Shopping</div>
+                <div>Online Shopping</div> 
               </div>
-            </div> */}  
-          </div>
-        </div>
-        {/* <br/> 
+            </div> 
+          </div> 
+         <br/> 
         <br/>
         <br/>
         <h2 className="display-5 text-center">Blogs</h2> 
         <hr /> 
         <div className="row justify-content-center">{loading ? <Loading /> : <ShowContracts />}</div> */}
-      </div>
-    </div>
+        </div>
+        </div> 
   );
-};
-
+};  
 export default Contracts;
