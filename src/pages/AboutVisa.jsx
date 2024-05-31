@@ -3,7 +3,7 @@ import { Categories, Footer, Navbar } from "../components";
 import Visa from '../img/Visa.jpg'; 
 
 const AboutVisa = () => {
-  return (
+  return ( 
     <>
       <Navbar />
       <div className="container my-3 py-3">
