@@ -1,8 +1,8 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import carousel1 from '../img/Caroussel1.jpg';
+import carousel1 from '../img/Caroussel1.png';
 import carousel2 from '../img/Caroussel2.jpg';
-import carousel3 from '../img/Caroussel3.jpg'; 
+import carousel3 from '../img/Caroussel3.png'; 
 
 const CarouselFadeExample = () => {
   return (

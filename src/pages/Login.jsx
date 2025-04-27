@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 import { Footer, Navbar } from '../components';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
   MDBInput,
   MDBIcon,
 } from 'mdb-react-ui-kit';
-import hellologo from '../img/warden3rdlogo.png';
 
 const NewLoginPage = () => {
   const location = useLocation();
@@ -50,66 +46,82 @@ const NewLoginPage = () => {
           });
         }
       })
-      .catch((err) => console.error('Error during login:', err.response.data));
+      .catch((err) => console.error('Error during login:', err.response?.data || err));
   };
 
   return (
     <>
       <Navbar />
-      <MDBContainer fluid>
-        <MDBCard className="text-black m-5" style={{ borderRadius: '25px' }}>
+      <MDBContainer fluid className="d-flex justify-content-center align-items-center" style={{ minHeight: "90vh" }}>
+        <MDBCard className="p-4" style={{ maxWidth: "700px", width: "100%", borderRadius: "25px", boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)" }}>
           <MDBCardBody>
-            <MDBRow>
-              <MDBCol md="10" lg="6" className="order-2 order-lg-1 d-flex flex-column align-items-center">
-                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Se connecter</p>
-                {showAlert && alert && (
-                  <Alert severity={alert.severity} sx={{ fontSize: '0.8rem', padding: '8px 16px' }}>
-                    {alert.message}
-                  </Alert>
-                )}
-                <form onSubmit={handleSubmit}>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <MDBIcon fas icon="envelope me-3" size="lg" />
-                    <MDBInput
-                      label="Your Email"
-                      id="form2"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <MDBIcon fas icon="lock me-3" size="lg" />
-                    <MDBInput
-                      label="Password"
-                      id="form3"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
-                  <button className="btn btn-outline-dark m-2" type="submit">Se connecter</button>
+            <h2 className="text-center mb-4" style={{ fontFamily: 'Abril Fatface', color: '#4169E1' }}>
+              Se connecter
+            </h2>
 
-                </form>
-                <div className="my-3">
-                  <p>
-                    Nouveau utilisateur ? {' '}
-                    <Link to="/register" className="text-decoration-underline text-info">
-                      S'incrire
-                    </Link>{' '}
-                  </p> 
-                  <p>
-                    Oublier votre mot de passe ?{' '}
-                    <Link to="/forgotpassword" className="text-decoration-underline text-info">
-                      Oublier Mot de passe ? 
-                    </Link>{' '}
-                  </p>
-                </div>
-              </MDBCol>
-              <MDBCol md="10" lg="6" className="order-1 order-lg-2 d-flex align-items-center">
-                {/* <MDBCardImage src={hellologo} fluid /> */}
-              </MDBCol>
-            </MDBRow>
+            {showAlert && alert && (
+              <Alert severity={alert.severity} sx={{ fontSize: '0.9rem', mb: 2 }}>
+                {alert.message}
+              </Alert>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4 d-flex align-items-center">
+                <MDBIcon fas icon="envelope" className="me-3" size="lg" />
+                <MDBInput
+                  label="Votre Email"
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="mb-4 d-flex align-items-center">
+                <MDBIcon fas icon="lock" className="me-3" size="lg" />
+                <MDBInput
+                  label="Mot de passe"
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="text-center mb-3">
+                <button
+                  type="submit"
+                  className="btn btn-primary px-5 py-2"
+                  style={{
+                    borderRadius: "25px",
+                    fontWeight: "600",
+                    fontSize: "1.1rem",
+                    transition: "0.3s",
+                  }}
+                  onMouseEnter={e => e.target.style.backgroundColor = "#27408B"}
+                  onMouseLeave={e => e.target.style.backgroundColor = "#4169E1"}
+                >
+                  Se connecter
+                </button>
+              </div>
+            </form>
+
+            <div className="text-center">
+              <p className="mb-1">
+                Nouveau utilisateur ?{" "}
+                <Link to="/register" className="text-decoration-underline text-info">
+                  S'inscrire
+                </Link>
+              </p>
+              <p>
+                Oublié votre mot de passe ?{" "}
+                <Link to="/forgotpassword" className="text-decoration-underline text-info">
+                  Réinitialiser
+                </Link>
+              </p>
+            </div>
           </MDBCardBody>
         </MDBCard>
       </MDBContainer>

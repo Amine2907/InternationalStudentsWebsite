@@ -1,18 +1,14 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Footer, Navbar } from '../components';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Alert } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBCardImage,
   MDBInput,
   MDBIcon,
 } from 'mdb-react-ui-kit';
@@ -22,12 +18,11 @@ const Register = () => {
   const { alert } = location.state || {};
   const [showAlert, setShowAlert] = useState(false);
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [repeatPassword, setRepeatPassword] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const navigate = useNavigate();
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +30,7 @@ const Register = () => {
       .then((result) => {
         console.log(result.data);
         if (result.data === "signup successful") {
-          navigate('/login', { state: { alert: { message: 'sing up successful verify email', severity: 'success' } } });
-
+          navigate('/login', { state: { alert: { message: 'Signup successful, verify your email.', severity: 'success' } } });
         }
       })
       .catch((err) => {
@@ -48,6 +42,7 @@ const Register = () => {
         }
       });
   };
+
   useEffect(() => {
     if (alert) {
       setShowAlert(true);
@@ -57,49 +52,52 @@ const Register = () => {
       return () => clearTimeout(timer);
     }
   }, [alert]);
+
   return (
     <>
       <Navbar />
-      <MDBContainer fluid>
-        <MDBCard className="text-black m-5" style={{ borderRadius: '25px' }}>
+      <MDBContainer fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: '90vh' }}>
+        <MDBCard className="p-4" style={{ borderRadius: '25px', maxWidth: '600px', width: '100%', boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.1)" }}>
           <MDBCardBody>
-            <MDBRow>
-              <MDBCol md="10" lg="6" className="order-2 order-lg-1 d-flex flex-column align-items-center">
-                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">S'inscrire</p>
-                {showAlert && alert && (
-                  <Alert severity={alert.severity} sx={{ fontSize: '0.8rem', padding: '8px 16px' }}>
-                    {alert.message}
-                  </Alert>)}
-                <form onSubmit={handleSubmit}>
-                  <div className="d-flex flex-row align-items-center mb-4 ">
-                    <MDBIcon fas icon="user me-3" size="lg" />
-                    <MDBInput label="Votre Nom" id="form1" type="text" className="w-100" onChange={(e) => setName(e.target.value)} />
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <MDBIcon fas icon="envelope me-3" size="lg" />
-                    <MDBInput label="Votre Email" id="form2" type="email" onChange={(e) => setEmail(e.target.value)} />
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <MDBIcon fas icon="lock me-3" size="lg" />
-                    <MDBInput label="Mot de passe" id="form3" type="password" onChange={(e) => setPassword(e.target.value)} />
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <MDBIcon fas icon="key me-3" size="lg" />
-                    <MDBInput label="Repeter mot de passe" id="form4" type="password" onChange={(e) => setRepeatPassword(e.target.value)} />
-                  </div>
-                  <button className="btn btn-outline-dark m-2" type="submit">S'inscrire</button>
+            <h2 className="text-center mb-4" style={{ color: '#4169E1', fontFamily: 'Abril Fatface' }}>
+              S'inscrire
+            </h2>
 
-                </form>
-                <div className="my-3">
-                  <p> 
-                  Déjà un compte ? <Link to="/login" className="text-decoration-underline text-info">Se connecter</Link>{' '}
-                  </p>
-                </div> 
-              </MDBCol>
-              <MDBCol md="10" lg="6" className="order-1 order-lg-2 d-flex align-items-center">
-                {/* <MDBCardImage src="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/09/League-Legends-8-Million-Concurrent-Players.jpg?q=50&fit=contain&w=1140&h=&dpr=1.5" fluid /> */}
-              </MDBCol>
-            </MDBRow>
+            {showAlert && alert && (
+              <Alert severity={alert.severity} sx={{ fontSize: '0.9rem', marginBottom: 2 }}>
+                {alert.message}
+              </Alert>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <MDBIcon fas icon="user me-3" size="lg" />
+                <MDBInput label="Votre Nom" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+              </div>
+              <div className="mb-4">
+                <MDBIcon fas icon="envelope me-3" size="lg" />
+                <MDBInput label="Votre Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+              <div className="mb-4">
+                <MDBIcon fas icon="lock me-3" size="lg" />
+                <MDBInput label="Mot de passe" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              </div>
+              <div className="mb-4">
+                <MDBIcon fas icon="key me-3" size="lg" />
+                <MDBInput label="Répéter Mot de Passe" type="password" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} required />
+              </div>
+              <div className="text-center">
+                <button className="btn btn-primary w-75" style={{ borderRadius: '20px' }} type="submit">
+                  S'inscrire
+                </button>
+              </div>
+            </form>
+
+            <div className="text-center mt-4">
+              <p style={{ color: "#777" }}>
+                Déjà un compte ? <Link to="/login" className="text-decoration-underline text-info">Se connecter</Link>
+              </p>
+            </div>
           </MDBCardBody>
         </MDBCard>
       </MDBContainer>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Footer, Navbar, SelectAutoWidth } from "../components";
+import { Footer, Navbar } from "../components";
 import axios from 'axios';
 
 const ContactPage = () => {
@@ -18,14 +18,11 @@ const ContactPage = () => {
     return !!localStorage.getItem('userId'); 
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLoggedIn()) {
-      
       const loggedInUserEmail = localStorage.getItem('email');
 
-      
       if (email === loggedInUserEmail) {
         axios.post('http://localhost:7000/contact', { email , selectedValue , message}) 
           .then((result) => {
@@ -33,7 +30,7 @@ const ContactPage = () => {
             setEmail("");
             setMessage("");
             setSelectedValue([]);
-            setSuccessMessage("Message sent successfully!");
+            setSuccessMessage("Message envoyé avec succès !");
             setTimeout(() => {
               setSuccessMessage("");
             }, 5000);
@@ -43,11 +40,11 @@ const ContactPage = () => {
               alert(err.response.data.error);
             } else {
               console.error(err);
-              alert('An error occurred. Please try again later.');
+              alert('Une erreur est survenue. Veuillez réessayer plus tard.');
             }
           });
       } else {
-        alert('Please enter your own email address.');
+        alert('Veuillez saisir votre propre adresse e-mail.');
       }
     } else {
       navigate('/login');
@@ -57,43 +54,77 @@ const ContactPage = () => {
   return (
     <>
       <Navbar />
-      <div className="container my-3 py-3">
-      <h2 className="text-center" style={{ fontSize: "3.6rem", color: "#4169E1", fontFamily: 'Abril Fatface' }}>
-              Contacter Nous! 
-            </h2>        <hr />
-        <div className="row my-4 h-100">
-          <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
+      <div className="container my-5">
+        <h2 
+          className="text-center mb-5" 
+          style={{ 
+            fontSize: "3rem", 
+            color: "#4169E1", 
+            fontFamily: 'Abril Fatface' 
+          }}
+        >
+          Contactez-Nous
+        </h2>
+        
+        <div className="row justify-content-center">
+          <div 
+            className="col-md-6 col-lg-5 col-sm-8"
+            style={{
+              backgroundColor: "#ffffff",
+              padding: "30px",
+              borderRadius: "15px",
+              boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.1)",
+            }}
+          >
             {successMessage && (
-              <div className="alert alert-success">{successMessage}</div>
+              <div className="alert alert-success text-center">{successMessage}</div>
             )}
             <form onSubmit={handleSubmit}>
-              <div className="form my-3">
-                <label htmlFor="Email">Email</label>
+              <div className="form-group my-3">
+                <label htmlFor="Email" style={{ fontWeight: "600" }}>Adresse Email</label>
                 <input
                   type="email"
                   className="form-control"
                   id="Email"
-                  placeholder="Votre adresse e-mail actuelle"
+                  placeholder="Votre adresse e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
-              {/* <div className="form my-3">
+
+              {/* Future select input (for subject) */}
+              {/* <div className="form-group my-3">
                 <SelectAutoWidth onSelect={handleSelectedValue} />
               </div> */}
-              <div className="form my-3">
-                <label htmlFor="Message">Message</label>
+
+              <div className="form-group my-4">
+                <label htmlFor="Message" style={{ fontWeight: "600" }}>Message</label>
                 <textarea
                   rows={5}
                   className="form-control"
                   id="Message"
-                  placeholder="Enter votre message"
+                  placeholder="Écrivez votre message ici..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  required
+                  style={{ resize: "none" }}
                 />
               </div>
+
               <div className="text-center">
-                <button className="my-2 px-4 mx-auto btn btn-dark" type="submit">
+                <button 
+                  className="btn btn-primary px-5 py-2"
+                  type="submit"
+                  style={{
+                    borderRadius: "25px",
+                    fontWeight: "600",
+                    fontSize: "1rem",
+                    transition: "0.3s",
+                  }}
+                  onMouseEnter={e => e.target.style.backgroundColor = "#27408B"}
+                  onMouseLeave={e => e.target.style.backgroundColor = "#4169E1"}
+                >
                   Envoyer
                 </button>
               </div>

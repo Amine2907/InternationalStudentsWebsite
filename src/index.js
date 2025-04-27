@@ -39,11 +39,9 @@ root.render(
         <Route path="/product/:id" element={<Product />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/AboutINS" element={<AboutINS />} />
-        <Route path="/aboutRepair" element={<AboutRepair />} />
-
+        <Route path="/aboutRepair" element={<AboutRepair />} /> 
         <Route path="/phones" element={<Phones />} />  
-        <Route path="/computers" element={<Computers />} />  
-
+        <Route path="/computers" element={<Computers />} />   
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />

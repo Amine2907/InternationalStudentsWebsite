@@ -1,75 +1,105 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import logo from './NavbarLogo/logo-png.png';  
+import logo from './NavbarLogo/logo-png.png';
+
 const Navbar = () => {
-    const state = useSelector(state => state.handleCart);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const state = useSelector(state => state.handleCart);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        localStorage.removeItem('userId'); 
-        navigate('/');
-    };
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    navigate('/');
+  };
 
-    const navLinkStyle = {
-        margin: '0 25px',
-        fontFamily: 'abril-fatface',
-        fontSize: '20px'
-    };
- 
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
-            <div className="container">
-                <NavLink className="navbar-brand fw-bold fs-4 px-2 d-flex align-items-center" to="/">
-                    <img src={logo}  alt="Logo" className="ms-2" style={{ height: '100px', width: '100px', color: '#4169E1' }} />
-                    <span style={{ color: '#4169E1' }}></span>
-                </NavLink> 
+  const navLinkStyle = {
+    margin: '0 25px',
+    fontFamily: 'Abril Fatface, cursive',
+    fontSize: '20px',
+    textDecoration: 'none',
+    color: '#000',
+  };
 
-                <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
+      <div className="container">
+        {/* Logo */}
+        <NavLink className="navbar-brand d-flex align-items-center fw-bold fs-4" to="/">
+          <img 
+            src={logo} 
+            alt="Logo" 
+            style={{ height: '100px', width: '100px' }} 
+            className="ms-2"
+          />
+          <span style={{ color: '#4169E1', marginLeft: '10px' }}>ETUDEX</span>
+        </NavLink>
+
+        {/* Toggler for mobile */}
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#navbarSupportedContent" 
+          aria-controls="navbarSupportedContent" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Navigation Links */}
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav m-auto text-center">
+            <li className="nav-item">
+              <NavLink to="/" className="nav-link" exact style={navLinkStyle}>
+                Accueil
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/blogs" className="nav-link" style={navLinkStyle}>
+                Blogs
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/contact" className="nav-link" style={navLinkStyle}>
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+
+          {/* Auth Buttons */}
+          <div className="buttons text-center">
+            {localStorage.getItem('userId') ? (
+              <>
+                <NavLink 
+                  to={`/profile?id=${localStorage.getItem('userId')}`} 
+                  className="btn btn-outline-dark m-2"
+                >
+                  Profil
+                </NavLink>
+                <button 
+                  onClick={handleLogout} 
+                  className="btn btn-outline-dark m-2"
+                >
+                  Se déconnecter
                 </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className="btn btn-outline-dark m-2">
+                  <i className="fa fa-sign-in-alt mr-1"></i> Se connecter
+                </NavLink>
+                <NavLink to="/register" className="btn btn-outline-dark m-2">
+                  <i className="fa fa-user-plus mr-1"></i> S'inscrire
+                </NavLink>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav m-auto my-2 text-center"> 
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/" exact style={navLinkStyle}>Accueil</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            {/* <NavLink className="nav-link" to="/product" style={navLinkStyle}>Blogs</NavLink> */}
-                            <NavLink className="nav-link" to="/blogs" style={navLinkStyle}>Blogs</NavLink> 
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/contact" style={navLinkStyle}>Contact</NavLink>
-                        </li>
-                        {/* <li className="nav-item dropdown">
-                            <NavLink className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={navLinkStyle}>
-                                About
-                            </NavLink>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <NavLink className="dropdown-item" to="../AboutINS">Insurance</NavLink>
-                                <NavLink className="dropdown-item" to="../About">Shop</NavLink>
-                                <NavLink className="dropdown-item" to="../AboutRepair">Repair</NavLink>
-                            </div>
-                        </li> */}
-                    </ul> 
-                    <div className="buttons text-center">
-                        {localStorage.getItem('userId') ? (
-                            <>
-                                <NavLink to={`/profile?id=${localStorage.getItem('userId')}`} className="btn btn-outline-dark m-2">Profil</NavLink>
-                                <button onClick={handleLogout} className="btn btn-outline-dark m-2">Se deconnecter</button>
-                            </>
-                        ) : (
-                            <>
-                                <NavLink to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i>Se connecter </NavLink>
-                                <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i>S'inscrire</NavLink>
-                            </>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
-}; 
-export default Navbar; 
+export default Navbar;
